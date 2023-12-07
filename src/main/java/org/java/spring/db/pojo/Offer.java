@@ -25,11 +25,12 @@ public class Offer {
 	private Pizza pizza;
 	
 	public Offer( ) { }
-	public Offer(LocalDate startDate, LocalDate finishDate, String title) {
+	public Offer(LocalDate startDate, LocalDate finishDate, String title, Pizza pizza) {
 		
 		setStartDate(startDate);
 		setFinishDate(finishDate);
 		setTitle(title);
+		setPizza(pizza);
 	}
 	public int getId() {
 		return id;

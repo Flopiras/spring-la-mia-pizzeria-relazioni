@@ -40,31 +40,13 @@ public class OfferController {
 	}
 	
 	@PostMapping("/pizzas/{id}/offer")
-	public String storeOffer(Model model, @PathVariable int id, @Valid @ModelAttribute Offer offer, BindingResult bindingResult) {
+	public String storeOffer(@PathVariable int id, @ModelAttribute Offer offer) {
 		
 		Pizza pizza = pizzaService.findById(id);
 		
-		System.out.println("Offerta:\n" + offer);
-		System.out.println("\n---------------\n");
-		System.out.println("Error:\n" + bindingResult);
-
-		if (bindingResult.hasErrors()) {
-
-			System.out.println(bindingResult);
-			model.addAttribute("offer", offer);
-
-			return "offer-form";
-		}
-
-		try {
-
-			offerService.save(offer);
-		} catch (Exception e) {
-
-			
-			model.addAttribute("offer", offer);
-			return "offer-form";
-		}
+		Offer newOffer = new Offer(offer.getStartDate(), offer.getFinishDate(), offer.getTitle(), pizza);
+		
+		offerService.save(newOffer);
 		
 		return "redirect:/";
 	}
