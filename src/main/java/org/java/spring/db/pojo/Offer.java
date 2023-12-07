@@ -65,7 +65,7 @@ public class Offer {
 	@Override
 	public String toString() {
 		
-		return "OFFERTA " + getTitle() + " dal " + getStartDate() + " al " + getFinishDate();
+		return "OFFERTA " + getTitle() + " - dal " + getStartDate() + " al " + getFinishDate();
 	}
 	
 }
