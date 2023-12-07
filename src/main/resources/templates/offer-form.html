@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+
+	<!-- Bootstrap CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+
+	<title>Form delle offerte</title>
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="text-center my-4">Offerta</h1>
+
+		<form method="POST"  th:object="${offer}">
+			
+			<!--title-->
+		<div class="mb-3">
+			<label for="title" class="form-label">Nome offerta</label>
+			<div class="input-group">
+				<input type="text" class="form-control" id="title" name="title" th:field="*{title}">
+			</div>
+		</div>
+		
+		<!--start date-->
+		<div class="mb-3">
+			<label for="title" class="form-label">Data di inizio dell'offerta</label>
+				<input type="date" class="form-control" id="startDate" name="startDate" th:field="*{startDate}">
+		</div>
+		
+		<!--finish date-->
+		<div class="mb-3">
+			<label for="title" class="form-label">Data di fine dell'offerta</label>
+				<input type="date" class="form-control" id="finishDate" name="finishDate" th:field="*{finishDate}">
+		</div>
+		
+		<!--button-->
+		<div class="d-flex justify-content-end mt-4">
+			<button type="submit" class="btn btn-primary">Aggiungi offerta</button>
+		</div>
+		</form>
+	</div>
+
+</body>
+
+</html>
