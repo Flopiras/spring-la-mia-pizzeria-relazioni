@@ -34,7 +34,7 @@
 				
 			<ul>
 				<li th:each="offer : ${pizza.getOffers}" th:object="${offer}">
-					[[*{title}]]
+					[[*{toString}]]
 				</li>
 			</ul>
 			</div>
