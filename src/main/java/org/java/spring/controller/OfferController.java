@@ -40,7 +40,9 @@ public class OfferController {
 	}
 	
 	@PostMapping("/pizzas/{id}/offer")
-	public String storeOffer(Model model,@Valid @ModelAttribute Offer offer, BindingResult bindingResult) {
+	public String storeOffer(Model model, @PathVariable int id, @Valid @ModelAttribute Offer offer, BindingResult bindingResult) {
+		
+		Pizza pizza = pizzaService.findById(id);
 		
 		System.out.println("Offerta:\n" + offer);
 		System.out.println("\n---------------\n");
@@ -60,7 +62,7 @@ public class OfferController {
 		} catch (Exception e) {
 
 			
-			model.addAttribute("pizza", offer);
+			model.addAttribute("offer", offer);
 			return "offer-form";
 		}
 		

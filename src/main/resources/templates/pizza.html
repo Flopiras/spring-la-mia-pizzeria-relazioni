@@ -21,11 +21,11 @@
 
 			<!--edit-->
 			<a th:href="@{/pizzas/edit/{id} (id=*{id})}" class="btn btn-warning text-white">Modifica</a>
-			
-<!--delete-->
-<form th:action="@{/pizzas/delete/{id} (id=*{id})}" method="POST">
-	<button class="btn btn-danger">Elimina</button>
-</form>
+
+			<!--delete-->
+			<form th:action="@{/pizzas/delete/{id} (id=*{id})}" method="POST">
+				<button class="btn btn-danger">Elimina</button>
+			</form>
 
 		</div>
 
