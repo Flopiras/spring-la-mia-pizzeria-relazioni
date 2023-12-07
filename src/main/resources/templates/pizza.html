@@ -27,21 +27,37 @@
 			</div>
 		</div>
 
+			<!--offers-->
+			<h3 class="text-center text-success">Offerte Speciali</h3>
+			
+			<div th:if="${!pizza.getOffers.isEmpty()}">
+				
+			<ul>
+				<li th:each="offer : ${pizza.getOffers}" th:object="${offer}">
+					[[*{title}]]
+				</li>
+			</ul>
+			</div>
+			
+			<div th:unless="${!pizza.getOffers.isEmpty()}">
+			<p class="text-center">Spiacenti, non ci sono offerte disponibili</p>
+		</div>
+
 		<!--buttons-->
-		<div class="d-flex justify-content-around align-items-center my-4">
+		<div class="d-flex justify-content-end align-items-center my-4">
 
 			<!--edit-->
 			<a th:href="@{/pizzas/edit/{id} (id=*{id})}" class="btn btn-warning text-white">Modifica</a>
 
 			<!--delete-->
-			<form th:action="@{/pizzas/delete/{id} (id=*{id})}" method="POST">
+			<form class="mx-4" th:action="@{/pizzas/delete/{id} (id=*{id})}" method="POST">
 				<button class="btn btn-danger">Elimina</button>
 			</form>
 
 			<!--create offer-->
 			<a th:href="@{/pizzas/{id}/offer (id=*{id})}" class="btn btn-success text-white">Nuova offerta</a>
 		</div>
-		
+
 	</div>
 
 </body>

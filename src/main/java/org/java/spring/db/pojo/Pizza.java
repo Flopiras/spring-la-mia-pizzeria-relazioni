@@ -46,6 +46,12 @@ public class Pizza {
 	}
 	
 	
+	public List<Offer> getOffers() {
+		return offers;
+	}
+	public void setOffers(List<Offer> offers) {
+		this.offers = offers;
+	}
 	public String getName() {
 		return name;
 	}
