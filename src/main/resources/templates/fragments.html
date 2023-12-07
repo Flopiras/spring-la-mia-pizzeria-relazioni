@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+
+	<a th:fragment="link(link, title)" 
+		th:href="${link}" 
+		th:text="${title}" 
+		>
+	</a>
+	
+	<div th:fragment="errorDiv(field)"
+		th:if="${#fields.hasErrors(field)}">
+		<ul>
+		   <li class="text-danger"
+		   		th:each="err : ${#fields.errors(field)}">
+		   		[[${err}]]	
+		   	</li>
+		</ul>
+	</div>
+
+</body>
+
+</html>

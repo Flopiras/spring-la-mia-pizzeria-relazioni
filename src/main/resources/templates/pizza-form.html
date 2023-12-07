@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+
+	<!-- Bootstrap CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+
+	<title>Aggiunta pizze</title>
+</head>
+<div class="container">
+
+	<h1 class="text-center my-4">Creazione nuova pizza</h1>
+
+	<form th:object="${pizza}" method="POST">
+		<!--name-->
+		<div class="mb-3">
+			<label for="name" class="form-label">Nome pizza</label>
+			<div class="input-group">
+				<input type="text" class="form-control" id="name" th:field="*{name}">
+				<div class="form-text" th:replace="fragments :: errorDiv('name')"></div>
+			</div>
+		</div>
+
+		<!--description-->
+		<div class="mb-3">
+			<label for="description" class="form-label">Descrizione (lista degli ingredienti)</label>
+			<div class="input-group">
+				<textarea class="form-control" id="description" th:field="*{description}" rows="4"></textarea>
+				<div class="form-text" th:replace="fragments :: errorDiv('description')"></div>
+			</div>
+		</div>
+
+		<!--URL immagine-->
+		<div class="mb-3">
+			<label for="urlImage" class="form-label">Copia qui l'URL dell'immagine</label>
+			<div class="input-group">
+				<input type="text" class="form-control" id="urlImage" th:field="*{urlImage}">
+				<div class="form-text" th:replace="fragments :: errorDiv('urlImage')"></div>
+			</div>
+		</div>
+
+		<!--button-->
+		<div class="d-flex justify-content-end mt-4">
+			<button type="submit" class="btn btn-primary">Aggiungi pizza</button>
+		</div>
+
+
+	</form>
+
+</div>
+
+<body>
+
+</body>
+
+</html>

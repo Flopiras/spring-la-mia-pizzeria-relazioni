@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+
+	<!-- Bootstrap CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+
+	<title>Dettaglio pizza</title>
+</head>
+
+<body th:object="${pizza}">
+
+	<div class="container">
+
+		<h3 class="my-4 text-center"> [[*{name}]]</h3>
+
+		<!--buttons-->
+		<div class="d-flex justify-content-around align-items-center my-4">
+
+			<!--edit-->
+			<a th:href="@{/pizzas/edit/{id} (id=*{id})}" class="btn btn-warning text-white">Modifica</a>
+			
+<!--delete-->
+<form th:action="@{/pizzas/delete/{id} (id=*{id})}" method="POST">
+	<button class="btn btn-danger">Elimina</button>
+</form>
+
+		</div>
+
+		<div class="d-flex">
+
+			<img th:src="*{urlImage}" alt="pizza" class="img-fluid" style="width: 200px;">
+
+			<div class="ms-4">
+
+				<h6>Ingredienti:</h6>
+				<p> [[*{description}]]</p>
+			</div>
+		</div>
+
+
+	</div>
+
+</body>
+
+</html>

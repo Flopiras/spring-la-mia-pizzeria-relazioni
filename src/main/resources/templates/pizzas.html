@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<!-- Bootstrap CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+	<title>Pizzeria Lato Oscuro</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h1 class="text-center my-4">Pizzeria Lato Oscuro</h1>
+
+		<div class="d-flex justify-content-around align-items-center">
+
+			<!--search form-->
+			<form class="d-flex justify-content-center flex-wrap my-4">
+
+				<div class="mb-3 d-flex">
+
+					<input th:value="${q}" type="text" class="form-control" id="query" name="q" placeholder="Cerca...">
+				</div>
+
+				<!--submit button-->
+				<div>
+					<button class="btn btn-primary ms-4">Cerca</button>
+				</div>
+			</form>
+
+			<!--create button-->
+			<a href="/pizzas/create" class="btn btn-info text-white">Aggiungi pizza</a>
+		</div>
+
+		<h3>Le nostre pizze:</h3>
+
+
+
+		<div th:if="${!pizzas.isEmpty()}">
+			<ul>
+				<li th:each="pizza : ${pizzas}" th:object="${pizza}">
+
+					<a th:href="@{/pizzas/{id}(id = *{id})}">
+
+						[[*{name}]]
+						<!--<a th:replace="fragments :: link(${/pizzas/{id}(id = ${pizza.id})}, ${pizza.name)"></a>-->
+					</a>
+
+				</li>
+			</ul>
+		</div>
+
+		<div th:unless="${!pizzas.isEmpty()}">
+			<h2>Spiacenti, non ci sono pizze disponibili</h2>
+		</div>
+
+	</div>
+
+</body>
+
+</html>
