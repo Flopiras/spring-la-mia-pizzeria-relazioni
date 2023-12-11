@@ -22,24 +22,37 @@
 
 			<div class="ms-4">
 
-				<h6>Ingredienti:</h6>
+				<h6>Descrizione:</h6>
 				<p> [[*{description}]]</p>
+
+				<div th:if="*{ingredients.size() > 0}">
+
+					<h5 class="mt-2">Ingredienti</h5>
+					
+					<ul>
+						<li th:each="ingredient : *{ingredients}"
+							th:object="${ingredient}">
+							[[*{title}]]
+						</li>
+					</ul>
+				</div>
+
 			</div>
 		</div>
 
-			<!--offers-->
-			<h3 class="text-center text-success">Offerte Speciali</h3>
-			
-			<div th:if="${!pizza.getOffers.isEmpty()}">
-				
+		<!--offers-->
+		<h3 class="text-center text-success">Offerte Speciali</h3>
+
+		<div th:if="${!pizza.getOffers.isEmpty()}">
+
 			<ul>
 				<li th:each="offer : ${pizza.getOffers}" th:object="${offer}">
 					[[*{toString}]]
 				</li>
 			</ul>
-			</div>
-			
-			<div th:unless="${!pizza.getOffers.isEmpty()}">
+		</div>
+
+		<div th:unless="${!pizza.getOffers.isEmpty()}">
 			<p class="text-center">Spiacenti, non ci sono offerte disponibili</p>
 		</div>
 

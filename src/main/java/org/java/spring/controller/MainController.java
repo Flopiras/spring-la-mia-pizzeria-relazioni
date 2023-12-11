@@ -54,8 +54,10 @@ public class MainController {
 	@GetMapping("/pizzas/create")
 	public String createPizza(Model model) {
 
+		List<Ingredient> ingredients = ingredService.findAll();
 		Pizza pizza = new Pizza();
 
+		model.addAttribute("ingredients", ingredients);
 		model.addAttribute("pizza", pizza);
 
 		return "pizza-form";
