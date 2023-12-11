@@ -2,8 +2,10 @@ package org.java.spring.controller;
 
 import java.util.List;
 
+import org.java.spring.db.pojo.Ingredient;
 import org.java.spring.db.pojo.Pizza;
 import org.java.spring.db.repo.PizzaRepository;
+import org.java.spring.db.serv.IngredientService;
 import org.java.spring.db.serv.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ public class MainController {
 
 	@Autowired
 	private PizzaService pizzaService;
+	
+	@Autowired
+	private IngredientService ingredService;
 
 	@GetMapping("/")
 	public String getIndex(Model model, @RequestParam(required = false) String q) {
@@ -67,8 +72,10 @@ public class MainController {
 	@GetMapping("/pizzas/edit/{id}")
 	public String editPizza(Model model, @PathVariable int id) {
 		
+		List<Ingredient> ingredients = ingredService.findAll();
 		Pizza pizza = pizzaService.findById(id);
 		
+		model.addAttribute("ingredients", ingredients);
 		model.addAttribute("pizza", pizza);
 		
 		return "pizza-form";
@@ -84,6 +91,8 @@ public class MainController {
 	public String deletePizza(@PathVariable int id) {
 		
 		Pizza pizza = pizzaService.findById(id);
+		
+		pizza.clearIngredients();
 		
 		pizzaService.delete(pizza);
 		

@@ -61,6 +61,9 @@ public class Pizza {
 	public void setIngredients(Ingredient... ingredients) {	
 		setIngredients(Arrays.asList(ingredients));
 	}
+	public void clearIngredients() {
+		getIngredients().clear();
+	}
 	public List<Offer> getOffers() {
 		return offers;
 	}
